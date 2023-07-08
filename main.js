@@ -15,7 +15,7 @@ app.use(body.urlencoded({extended:false}))
 app.use((req,res,next)=>{
     User.findById("64a793d584db7c9b367c0cf6")
     .then(user=>{
-        req.user=user;
+        req.user=new User(user.name,user.email,user.cart,user._id);
         next()
     })
     .catch(err=>console.log(err));
